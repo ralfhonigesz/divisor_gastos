@@ -12,7 +12,64 @@
 
 <body>
 
-    <h1>La idea es crear un divisor de gastos compartidos, para poder dividir cuentas entre los usuarios.</h1>
+    <h1>Divisor de Gastos</h1>
+
+    <form id="form-container">
+        
+        <!--<div>
+            <label for="motivo">Motivo de los Gastos:</label>
+            <input type="text" id="motivo">
+        </div> -->
+
+        <!--Participante-->
+        <div>
+            <label for="nombre">¿Quien gastó?</label>
+            <input type="text" id="nombre">
+        </div>
+
+        <!--Gasto-->
+        <div>
+            <label for="gasto">¿Cuanto gastó?</label>
+            <input type="number" id="gasto">
+        </div>
+
+        <!--Agregar-->
+        <div>
+            <button type="button" id="agregar">Agregar</button>
+        </div>
+
+        <div id="avisos-de-error"></div>
+
+    </form>
+
+    <!--Lista de participantes con sus gastos-->
+    <section id="lista-container">
+        <h3>Gastos:</h3>
+        <ul id="lista"></ul>
+    </section>
+
+    <!--Boton para calcular-->
+    <div>
+        <button type="button" id="calcular">Calcular deudas</button>
+    </div>
+
+    <!--Lista de deudas-->
+    <section id="lista-deudas-container">
+        <h3>Deudas:</h3>
+        <ul id="lista-deudas"></ul>
+    </section>
+
+    <!--Boton para guardar-->
+    <div>
+        <button type="button" id="guardar">Guardar</button>
+    </div>
+
+    <!--Boton para ver eventos guardados-->
+    <div>
+        <button type="button" id="ver-guardado">Ver ultimo evento guardado</button>
+    </div>
+
+    <div id="mostrar-guardados"></div>
 
 </body>
 

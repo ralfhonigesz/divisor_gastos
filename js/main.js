@@ -1,89 +1,156 @@
-let saludar = "Bienvenido al divisor de gastos! Empecemos"
-alert(saludar)
+// GLOBAL
 
-let motivoCuenta = prompt("Ingrese motivo de la nueva cuenta de gastos")
-console.log(motivoCuenta)
+const gastos = []
 
-const participantes = [
-    {
-        nombre: prompt("Ingrese su nombre"),
-        apellido: prompt("Ingrese su apellido")
-    }
-]
-console.log(participantes)
+let agregar = document.getElementById("agregar")
+let nombre = document.getElementById("nombre")
+let gasto = document.getElementById("gasto")
+let avisosError = document.getElementById("avisos-de-error")
 
-let agregar = true
-while (agregar) {
 
-    const addElement = () => {
-        const nombre = prompt("Ingrese nombre nuevo participante")
-        const apellido = prompt("Ingrese apellido nuevo participante")
+// INGRESO VALORES
 
-        const participante = {
-            nombre: nombre,
-            apellido: apellido
-        }
-        participantes.push(participante)
-    }
+agregar.onclick = () => {
 
-    addElement()
+    let nombreValor = nombre.value
+    let gastoValor = parseFloat(gasto.value)
 
-    let confirmacion = prompt("Desea agregar nuevo participante? (si/no)").toLowerCase()
-    if (confirmacion == "no") {
-        agregar = false
-        break
-    }
-}
 
-let continuar = true
-while (continuar) {
-    let menu = parseInt(prompt(" Ingrese 1 para agregar nuevo gasto a un participante \n Ingrese 2 para agregar nuevo participante \n Ingrese 3 para eliminar participante \n Ingrese 4 para liquidar cuenta \n Ingrese 5 para salir"))
-    switch (menu) {
+    // Verificar nombre ingresado y gasto >= 0
+    if (nombreValor !== '' && gastoValor >= 0) {
 
-        case 1:
+        // Verificar nombre repetido
+        if (nombreRepetido(nombre.value)) {
 
-            
-            break
+            avisosError.innerText = "Nombre ya ingresado"
 
-        case 2:
+            limpiarInputs()
 
-            const addElement = () => {
-                const nombre = prompt("Ingrese nombre nuevo participante")
-                const apellido = prompt("Ingrese apellido nuevo participante")
+        } else {
 
-                const participante = {
-                    nombre: nombre,
-                    apellido: apellido
-                }
-                participantes.push(participante)
+            // Pushear nombre y gasto como objeto al array gastos
+            let nombreGasto = {
+                nombre: nombreValor,
+                gasto: gastoValor
             }
 
-            addElement()
-            console.log(participantes)
-            break
+            gastos.push(nombreGasto)
 
-        case 3:
+            limpiarInputs()
 
-            participantes.pop()
-            console.log(participantes)
-            break
+            borrarError()
 
-        case 4:
+            limpiarListaDeudas()
 
-            break
+            // Mostrar nombre y gasto en lista html
+            let lista = document.getElementById("lista")
 
-        default:
+            let print = document.createElement("li")
+            print.innerHTML = `${nombreValor} gastó $${gastoValor.toFixed(2)}`
+            lista.appendChild(print)
 
-            console.log("Hasta el proximo gasto!")
-            break
+        }
 
-    }
+    } else {
 
-    let confirmación = prompt("Desea volver al menu? (si / no)").toLowerCase()
-    if (confirmación == "no") {
-        continuar = false
-        alert("Hasta el proximo gasto!")
+        // Aviso de datos ingresados incorrectos
+        avisosError.innerText = "Datos incorrectos, vuelva a intentar"
+
+        limpiarInputs()
     }
 }
+
+// CALCULAR DIVISION DE DEUDAS
+
+let calcular = document.getElementById("calcular")
+let listaDeudas = document.getElementById("lista-deudas")
+
+calcular.onclick = () => {
+
+    // Funcion calcular deudas
+    function calcularDeudas() {
+        const totalGastos = gastos.reduce((total, gasto) => total + gasto.gasto, 0)
+
+        let gastoPorPersona = totalGastos / gastos.length
+
+        gastos.forEach((gasto) => {
+            let deuda = gastoPorPersona - gasto.gasto
+            let li = document.createElement('li')
+            li.textContent = `${gasto.nombre} debe ${deuda >= 0 ? 'dar' : 'recibir'} $${Math.abs(deuda).toFixed(2)}`
+            listaDeudas.appendChild(li)
+        })
+    }
+    calcularDeudas()
+}
+
+// GUARDAR EVENTO
+
+let listaContainer = document.getElementById("lista-container")
+let listaDeudasContainer = document.getElementById("lista-deudas-container")
+
+let guardar = document.getElementById("guardar")
+
+guardar.onclick = () => {
+    localStorage.setItem('eventoGuardado', listaContainer.innerHTML)
+    localStorage.setItem('eventoGuardado2', listaDeudasContainer.innerHTML)
+    mostrarGuardados.innerHTML = "Guardado con exito!"
+}
+
+// VER EVENTOS GUARDADOS
+
+let verGuardados = document.getElementById("ver-guardado")
+let mostrarGuardados = document.getElementById("mostrar-guardados")
+
+verGuardados.onclick = () => {
+
+    let seccionGuardada = localStorage.getItem('eventoGuardado')
+    let seccionGuardada2 = localStorage.getItem('eventoGuardado2')
+
+    if (seccionGuardada) {
+        mostrarGuardados.innerHTML = seccionGuardada + seccionGuardada2
+    } else {
+        mostrarGuardados.innerHTML = "No hay eventos guardados."
+    }
+}
+
+
+// FUNCIONES
+
+// funcion verificar nombre repetido
+function nombreRepetido(nombre) {
+    return gastos.some(function (gasto) {
+        return gasto.nombre.toLowerCase() === nombre.toLowerCase()
+    })
+}
+
+// funcion para borrar aviso de error
+function borrarError() {
+    avisosError.innerText = ""
+}
+
+// funcion limpiar inputs
+function limpiarInputs() {
+    nombre.value = ''
+    gasto.value = ''
+}
+
+// Funcion limpiar lista de deudas
+function limpiarListaDeudas() {
+    listaDeudas.innerHTML = ''
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
