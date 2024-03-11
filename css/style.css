@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+ul {
+  list-style: none;
+}
+
+.boton {
+  background-color: #00395D;
+  color: white;
+  padding: 2.5px 7px;
+  font-family: "Nunito", sans-serif;
+  border: 1.5px solid #000D21;
+  border-radius: 6px;
+}
+
+.boton-ultimo {
+  background-color: #006EA7;
+  color: white;
+  padding: 2.5px 7px;
+  font-family: "Nunito", sans-serif;
+  border: 1.5px solid #00395D;
+  border-radius: 6px;
+  margin-top: 2rem;
+}
+
+html {
+  background-color: #006EA7;
+}
+
+.titulo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.5rem;
+  margin: 30px 5px 5px 5px;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.form-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px 5px;
+}
+.form-div-label {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2rem;
+  color: #000D21;
+}
+.form-div-input {
+  width: 300px;
+  height: 23.5px;
+  border: 2px solid #00395D;
+  border-radius: 6px;
+  font-size: 1.5rem;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  color: #000D21;
+}
+.form-div-error {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  color: #000D21;
+  font-size: 1.5rem;
+}
+
+.section-listas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+h3 {
+  display: flex;
+  justify-content: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.5rem;
+  color: #000D21;
+}
+
+ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 350px;
+  padding: 10px 15px;
+  background-color: #a0dfe0;
+  border: 2px solid #00395D;
+  border-radius: 6px;
+}
+
+li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.3rem;
+  padding: 1.5px;
+}
+
+.div-boton-posicion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*# sourceMappingURL=style.css.map */

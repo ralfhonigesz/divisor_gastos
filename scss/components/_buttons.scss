@@ -1,0 +1,18 @@
+.boton {
+    background-color: $color-azul-oscuro;
+    color: white;
+    padding: 2.5px 7px;
+    font-family: $font-family-nunito;
+    border: 1.5px solid $color-negro;
+    border-radius: 6px;
+}
+
+.boton-ultimo {
+    background-color: $color-azul-medio;
+    color: white;
+    padding: 2.5px 7px;
+    font-family: $font-family-nunito;
+    border: 1.5px solid $color-azul-oscuro;
+    border-radius: 6px;
+    margin-top: 2rem;
+}

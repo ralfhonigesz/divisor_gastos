@@ -1,0 +1,13 @@
+// Import
+
+@import "./base/reset";
+@import "./base/tipografias";
+
+@import "./utilities/variables.scss";
+@import "./utilities/mixins";
+@import "./utilities/condicionales";
+
+@import "./components/buttons";
+@import "./components/footer";
+
+@import "./views/home"
